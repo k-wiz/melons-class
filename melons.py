@@ -1,16 +1,17 @@
 """This file should have our order classes in it."""
 
 from random import randint
-from datetime import datetime
 
 class AbstractMelonOrder(object):
+
+    shipped = False
 
     def __init__(self, species, qty, order_type, tax):
         """Initialize melon order attributes."""
 
         self.species = species
         self.qty = qty
-        self.shipped = False
+        #self.shipped = False
         self.order_type = order_type
         self.tax = tax
         # self.price = randint(5, 9)
@@ -43,6 +44,9 @@ class AbstractMelonOrder(object):
 
 class DomesticMelonOrder(AbstractMelonOrder):
     """A domestic (in the US) melon order."""
+
+    order_type = "domestic"
+    tax = .08
 
     def __init__(self, species, qty):
         super(DomesticMelonOrder, self).__init__(species, qty, 
